@@ -1,0 +1,241 @@
+body
+{
+    background-color: green;
+  
+}
+
+#container
+{
+    width: 100%;
+    height: 100%;
+}
+
+img#logo
+{
+    width: 150px;
+    height: 150px;
+   margin: auto;
+}
+
+#masa
+{
+    margin: auto;
+    /*margin-top: -%;*/ 
+    width: 60%;
+    border: 3px solid red;
+    padding: 10px;
+  
+}
+
+#kasa-els
+{
+    margin: auto;
+    width: 50%;
+    border: 3px solid red;
+    padding: 10px;
+    text-align: center;
+}
+
+img
+{
+    width: 100px;
+    height: 140px;;
+   margin-bottom: 20px;
+   margin-top: 20px;
+   margin-right: -20px; 
+  
+}
+
+span
+{
+font-weight:100px;
+font-size: 30px;
+text-decoration: underline;
+font-family: fantasy;
+}
+
+#oyuncular
+{ 
+      /* width:100%;
+    display: inline-block;
+    margin: auto;
+  border: 3px solid red;
+     */
+     border: 1px solid black; 
+      display:inline-flex; 
+   
+     /* align-items: center;     */
+     border: 5px solid yellow; 
+     width: 100%;
+}
+
+#oyuncular div
+{
+    flex: 1;
+
+}
+
+button.oturbttn
+{
+ 
+    width: 140px;
+    height: 50px; 
+    margin: 20%;
+    margin-left: 25%;
+    /* margin-bottom: 50px;
+    margin-left: 80px; */
+ 
+    font-weight: 600;
+    font-size: 20px;
+    align-content: center;
+    
+}
+
+#countdowndiv
+{
+    
+    margin: auto;
+    width: 50%;
+    border: 3px solid black;    
+    padding: 2px;
+    text-align: center;
+    
+}
+img#checkmark
+{
+    
+    width: 100px;
+    height: 100px;
+    margin-left: 100px;
+     /*
+    margin-top: 300px;   
+    margin-bottom: 50px; */
+}
+button.kalkbttn
+{
+    width: 70px;
+    height: 35px; 
+  
+    
+            
+}
+#deneme123
+{    
+  
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid red;
+    background-color: cornflowerblue;
+      
+    align-items: center;
+    justify-content: center;
+}
+
+#deneme1234
+{    
+  
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid red;
+    background-color: cornflowerblue;
+      
+    align-items: center;
+    justify-content: center;
+}
+
+#buttondiv
+{
+margin-top: 40 px;
+}
+
+#kartcekbtn1
+{
+    
+    width: 50%;
+    height: 40px; 
+    font-weight: bolder;
+    font-size: 100%;
+    background-color:#7FFF00;
+
+    
+}
+
+#kartcekmebtn1
+{
+    
+    width: 50%;
+    height: 40px; 
+    font-weight: bolder;
+    font-size: 100%;
+    background-color:#FF4500;
+}
+button#kartcekbtn1:hover
+{
+    background-color: #2E8B57;
+    transition: 1s;
+    color: #000000;
+}   
+button#kartcekmebtn1:hover
+{
+    background-color: #800000;
+    transition: 1s;
+}       
+#kartcekbtn1:active
+{
+    -webkit-animation:spin 0.3s linear infinite;
+    -moz-animation:spin 0.3s linear infinite;
+    animation:spin 0.3s linear infinite;      
+   
+}
+
+#kartcekmebtn1:active
+{
+    -webkit-animation:reversespin 0.3s linear infinite;
+    -moz-animation:reversespin 0.3s linear infinite;
+    animation:reversespin 0.3s linear infinite;
+}
+
+
+h4
+{
+
+       
+align-items:flex-end;
+text-align: center;
+font-size: 40px;
+}
+
+@-moz-keyframes spin { 
+    100% { -moz-transform: rotate(360deg); } 
+}
+@-webkit-keyframes spin { 
+    100% { -webkit-transform: rotate(360deg); } 
+}
+@keyframes spin { 
+    100% { 
+        -webkit-transform: rotate(360deg); 
+        transform:rotate(360deg); 
+    }
+}
+
+
+
+    @-moz-keyframes reversespin { 
+        100% { -moz-transform: rotate(-360deg); } 
+    }
+    @-webkit-keyframes reversespin { 
+        100% { -webkit-transform: rotate(-360deg); } 
+    }
+    @keyframes reversespin { 
+        100% { 
+            -webkit-transform: rotate(-360deg); 
+            transform:rotate(-360deg); 
+        }
+    }
+/* #deneme123 div
+{
+    width: 70px;
+    height: 70px;
+} */
+
+
