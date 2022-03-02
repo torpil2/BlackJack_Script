@@ -196,12 +196,13 @@ function destesayisi()
 destesayisi();
 
 // Oyuncu 1 variables
-const oturulmamisoyuncu1div ='<button class="oturbttn" id="oturbttn1" onclick="otur()">Otur1</button>';
+const oturulmamisoyuncu1div ='<button class="oturbttn" id="oturbttn1" onclick="otur(this.parentElement)">Otur1</button>';
 const oturulmusdiv = '<img id="checkmark" src="Images/checkmark.png">';
-const kalkbutton = '<button class="oturbttn" id="oturbttn1" onclick="kalk()">Kalk</button>';
+const kalkbutton = '<button class="oturbttn" id="oturbttn1" onclick="kalk(this.parentElement)">Kalk</button>';
+const kasacards = document.getElementById("kasa-cards");
 const oyuncu1 = document.getElementById("oyuncu1");
-const kartcekbutton  = '<button class="kartcek" id="kartcekbtn1" onclick="kartcekfunc()">Kart Çek</button>';
-const kartdurbutton = '<button class="kartcekme" id="kartcekmebtn1" onclick="kartcekme()">Dur</button>';
+const kartcekbutton  = '<button class="kartcek" id="kartcekbtn1" onclick="kartcekfunc(this.parentElement.parentElement)">Kart Çek</button>';
+const kartdurbutton = '<button class="kartcekme" id="kartcekmebtn1" onclick="kartcekme(this.parentElement.parentElement)">Dur</button>';
 let isSit1=0 ;
 //deneme
 //let oyuncu1 = document.getElementById("oyuncu1").parentElement;
@@ -212,119 +213,137 @@ let isSit1=0 ;
 let isSit2=0 ;
 let isSit3=0 ;
 let isSit4=0 ;
+let anyonesit =1;
 
-var count=3;
+var count=100;
+
 let sayac1 = 0;
 var counter
+var oturanoyuncular = [];
+var cancel;
 
-function otur()
+function otur(parentdivname)
 {     
-    //oyuncu1
-    oyuncu1.innerHTML = "";
-    oyuncu1.innerHTML +=  oturulmusdiv;
-    oyuncu1.innerHTML += kalkbutton;
-    // oyuncu2.innerHTML = "";
-    // oyuncu2.innerHTML +=  oturulmusdiv;
-    // oyuncu2.innerHTML += kalkbutton;
-    console.log(oyuncu1);
-    isSit1 = 1;   
-    document.getElementById("timer").innerHTML=count + " Saniye Sonra Oyun Başlıyor..."; 
-    count=3;  
-    sayac1=1;    
-    if(Boolean(sayac1)==true &&count>=0)
-    {
-     counter=setInterval(timer, 1000); //1000 will  run it every 1 second
-    }     
-    else
-    {
-        clearInterval(counter);
-    }
-   }
-
-
-
     
-function kalk()
-{
-    oyuncu1.innerHTML = "";
-    oyuncu1.innerHTML += oturulmamisoyuncu1div;       
-    count = 3;
-    if(count=3)
-    {
-        document.getElementById("countdowndiv").style.visibility ="visible";
-        document.getElementById("timer").innerHTML=" Oyuncular Bekleniyor..."; 
-    }
-    sayac1 = 0;  
-    if(Boolean(sayac1)==false)
-    {
-        
-        clearInterval(counter);
-    } 
-}
+    parentdivname.innerHTML ="";
+    parentdivname.innerHTML +=  oturulmusdiv;
+    parentdivname.innerHTML += kalkbutton;
+    isSit1 = 1;   
   
+    oturanoyuncular.push(parentdivname);
+    console.log(oturanoyuncular);
+    //count=3;  
+    anyonesit=0;
+  startCount();
 
-var countdownzero       
-//const resim1 =  sinekimgels[0];
-//  console.log(sinekimgels[0]);
-//const resim2 = '  <img src="Images/Card Images/card back black.png"> ';         
+        //sayac1=1;
+      // timercount();
+    }
 
+    var seconds=0;
 
-function timer()
-{
-     if(sayac1==true && count>=0)
-    {
+    let counterr = 5;
+    let timeout;
+    let timer_on = 0;
+
+    function timedCount() {
      
-   
-  count=count-1;
-  countdownzero = count;
-  console.log(countdownzero);
-  if (count <= 0)
-  {
-      countdownzero=0;
-      
-if(countdownzero==0)
-{
-    const point = document.createElement("h4")  
-    const buttondiv = document.createElement("div");
+        if(counterr==0)
+        {
+        console.log(counterr);
+    let point = document.createElement("div")  
+    let oyuncuidsis;
+    let buttondiv = document.createElement("div");
     buttondiv.id="buttondiv";
     
-    point.textContent = 5;
+    //point.textContent = "Kartların Puan Toplamı= " ;
+    point.className ="kartpuandiv";
     document.getElementById("countdowndiv").style.visibility ="hidden";
-    oyuncu1.innerHTML="";
-    
-    oyuncu1.appendChild(buttondiv);
+  
 
     buttondiv.innerHTML += kartcekbutton;
     buttondiv.innerHTML += kartdurbutton;
+   var oyuncudivid =0;
+   var oyuncunundivi;
    
-    oyuncu1.appendChild(point);
+    oturanoyuncular.forEach(function(elem)  {
   
-     
-  
-
-
-}
-     clearInterval(counter);
-     return;
-  }
-
- document.getElementById("timer").innerHTML=count + " Saniye Sonra Oyun Başlıyor..."; 
- }
-  else if(sayac1==false)
-  {
-   document.getElementById("timer").innerHTML=" Oyuncular Bekleniyor..."; 
-    count = 3;
+   
+    document.getElementById(oturanoyuncular[oyuncudivid].id).innerHTML="";
+   
+    point.setAttribute("id","puan"+oturanoyuncular[oyuncudivid].id.slice(6));   
+  point.textContent = 0;
+document.getElementById(oturanoyuncular[oyuncudivid].id).appendChild(buttondiv.cloneNode(true));
+    document.getElementById(oturanoyuncular[oyuncudivid].id).appendChild(point.cloneNode(true));
    
  
- } 
+   
+      oyuncudivid+=1;
+       
+        
+    });
+
+   
+  //  oyuncu1.appendChild(point);       
+        }
+        
+        if(counterr>=0)
+        {
+       document.getElementById("timer").innerHTML=counterr + " Saniye Sonra Oyun Başlıyor..."; 
+       console.log(counterr);
+     
+        counterr--;        
+        timeout = setTimeout(timedCount, 1000);
+         }
+       
+      }
+
+      
+function startCount() {
+    if (!timer_on) {
+      timer_on = 1;
+      timedCount();
+    }
+  }
+  
+  function stopCount() {
+      if(oturanoyuncular.length==0)
+      {
+        document.getElementById("countdowndiv").style.visibility ="visible";
+        document.getElementById("timer").innerHTML=" Oyuncular Bekleniyor..."; 
+      }
+  
+    clearTimeout(timeout);
+    timer_on = 0;
+  }
+                    
+ 
+    
+function kalk(parentdivname)
+{   
+    parentdivname.innerHTML = "";
+    parentdivname.innerHTML += oturulmamisoyuncu1div;  
+    console.log(parentdivname);
+    var kalkanoyuncu = oturanoyuncular.indexOf(parentdivname);
+    oturanoyuncular.splice(kalkanoyuncu,1);    
+    console.log(oturanoyuncular);
+  
+     
+    if(oturanoyuncular.length<1)
+    {
+        counterr=5;
+        stopCount();
+    }
+   
+   
 } 
-
-
 
     var kuparandarray = shuffle([1,2,3,4,5,6,7,8,9,10,11,12,13]);
     var macarandarray = shuffle([1,2,3,4,5,6,7,8,9,10,11,12,13]);
     var karorandarray = shuffle([1,2,3,4,5,6,7,8,9,10,11,12,13]);
     var sinekrandarray = shuffle([1,2,3,4,5,6,7,8,9,10,11,12,13]);
+    var kasarandarray= shuffle([1,2,3,4,5,6,7,8,9,10,11,12,13]);
+
         
     function* shuffle(array) {
 
@@ -334,20 +353,20 @@ if(countdownzero==0)
             yield array.splice(Math.floor(Math.random() * (i+1)), 1)[0];
         }
     
-    }
+    }        
 
-   
-   
 
-    //console.log(kupaimgsrc[0]);
 
-   
-function kartcekfunc()
+    let cekilenkartsayisi=0 ;
+function kartcekfunc(parentdivname)
 {   
-
+    
+    if(cekilenkartsayisi<52)
+    {
+//console.log("Parne div name= "+document.getElementById(parentdivname));
 let desteadi = Math.floor(Math.random()*tumdeste.length);
 // let desteadi=0;
-console.log("Deste adi = " +desteadi);
+//console.log("Deste adi = " +desteadi);
 
    
    
@@ -356,12 +375,11 @@ console.log("Deste adi = " +desteadi);
     let randomsayikaro;
     let randomsayisinek;
    
+
 switch (desteadi) {
      case 0: 
-   
- 
-//kupa
-  
+
+    //kupa 
                           
      randomsayikupa = kuparandarray.next().value;      
      if(typeof randomsayikupa!=="undefined")
@@ -370,27 +388,44 @@ switch (desteadi) {
                return item.indexOf(randomsayikupa)!==-1;
             })
   
-             console.log("random sayı func kupa=" +randomsayikupa);                         
+             console.log("kart puanı random sayı func kupa=" +randomsayikupa);                         
                             
       
-      document.getElementById("oyuncu1").appendChild(kupaimgels[indexdeneme2]);
+     
+
+      document.getElementById(parentdivname.id).appendChild(kupaimgels[indexdeneme2]);
             
+      let denemedivpuan= parseInt(document.getElementById("puan"+parentdivname.id.substring(6)).textContent );
+     console.log("denemedivpuan= "+ denemedivpuan);
+     if(randomsayikupa<=10)
+     {
+        let toplamkartdegeri = denemedivpuan+randomsayikupa;
+        document.getElementById("puan"+parentdivname.id.substring(6)).textContent=toplamkartdegeri;  
+     }
+     else if ( randomsayikupa>10)
+     {
+         let toplamkartdegeri = denemedivpuan+10;
+         document.getElementById("puan"+parentdivname.id.substring(6)).textContent=toplamkartdegeri;  
+     }
+                                                
+     
+             
      let cikarilacakindexsayisi = randomsayikupa-1;
+     cekilenkartsayisi+=1;
   
        kupa.splice(cikarilacakindexsayisi,1,"bosluk");  
-    
+   
        
-       console.log("cikarildiktan sonra kupa destesi= " +kupa);   
+      // console.log("cikarildiktan sonra kupa destesi= " +kupa);   
     
     }
      else
      {
          console.log("kupa destesi bitti!");
+         kartcekfunc(parentdivname);
      }
-     
-
-    
-        break;
+         
+    break;
 
         case 1:
 //maca
@@ -401,12 +436,30 @@ switch (desteadi) {
                   return item.indexOf(randomsayimaca)!==-1;
                })
      
-                console.log("random sayı func kupa=" +randomsayimaca);                         
+                console.log("puan random sayı func kupa=" +randomsayimaca);                         
                                
          
-         document.getElementById("oyuncu1").appendChild(macaimgels[indexdeneme2]);
-               
+        // document.getElementById("oyuncu1").appendChild(macaimgels[indexdeneme2]);
+      
+         document.getElementById(parentdivname.id).appendChild(macaimgels[indexdeneme2]);
+
+         let denemedivpuan= parseInt(document.getElementById("puan"+parentdivname.id.substring(6)).textContent );
+         console.log("denemedivpuan= "+ denemedivpuan);
+        
+        if(randomsayimaca<=10)
+        {
+            let toplamkartdegeri = denemedivpuan+randomsayimaca;
+            document.getElementById("puan"+parentdivname.id.substring(6)).textContent=toplamkartdegeri;  
+        }
+        else if ( randomsayimaca>10)
+        {
+            let toplamkartdegeri = denemedivpuan+10;
+            document.getElementById("puan"+parentdivname.id.substring(6)).textContent=toplamkartdegeri;  
+        }                               
+          
+                        
         let cikarilacakindexsayisi = randomsayimaca-1;
+        cekilenkartsayisi+=1;
      
           maca.splice(cikarilacakindexsayisi,1,"bosluk");  
        
@@ -417,9 +470,10 @@ switch (desteadi) {
         else
         {
             console.log("maca destesi bitti!");
+            kartcekfunc(parentdivname);
         }
 
-        break;
+    break;
 
         case 2:
 //karo
@@ -430,12 +484,29 @@ switch (desteadi) {
                return item.indexOf(randomsayikaro)!==-1;
             })
   
-             console.log("random sayı func kupa=" +randomsayikupa);                         
+             console.log("puan random sayı func kupa=" +randomsayikaro);                         
                             
+           
+    //  document.getElementById("oyuncu1").appendChild(karoimgels[indexdeneme2]);
+    document.getElementById(parentdivname.id).appendChild(karoimgels[indexdeneme2]);
+
+    let denemedivpuan= parseInt(document.getElementById("puan"+parentdivname.id.substring(6)).textContent );
+    console.log("denemedivpuan= "+ denemedivpuan);
+   
+   if(randomsayikaro<=10)
+   {
+    let toplamkartdegeri = denemedivpuan+randomsayikaro;
+    document.getElementById("puan"+parentdivname.id.substring(6)).textContent=toplamkartdegeri;  
+   }
+   else if(randomsayikaro>10)
+   {
+       let toplamkartdegeri = denemedivpuan+10;
+       document.getElementById("puan"+parentdivname.id.substring(6)).textContent=toplamkartdegeri;  
+   }              
       
-      document.getElementById("oyuncu1").appendChild(karoimgels[indexdeneme2]);
             
      let cikarilacakindexsayisi = randomsayikaro-1;
+     cekilenkartsayisi+=1;
   
        karo.splice(cikarilacakindexsayisi,1,"bosluk");  
     
@@ -446,9 +517,10 @@ switch (desteadi) {
      else
      {
          console.log("karo destesi bitti!");
+         kartcekfunc(parentdivname);
      }
         
-        break;
+    break;
 
         case 3:
 //sinek     
@@ -459,12 +531,28 @@ switch (desteadi) {
                return item.indexOf(randomsayisinek)!==-1;
             })
   
-             console.log("random sayı func kupa=" +randomsayisinek);                         
+             console.log("puan random sayı func kupa=" +randomsayisinek);                         
                             
-      
-      document.getElementById("oyuncu1").appendChild(sinekimgels[indexdeneme2]);
+            
+     // document.getElementById("oyuncu1").appendChild(sinekimgels[indexdeneme2]);
+     document.getElementById(parentdivname.id).appendChild(sinekimgels[indexdeneme2]);
+
+     let denemedivpuan= parseInt(document.getElementById("puan"+parentdivname.id.substring(6)).textContent );
+     console.log("denemedivpuan= "+ denemedivpuan);
+   if(randomsayisinek<=10)
+   {
+    let toplamkartdegeri = denemedivpuan+randomsayisinek;
+    document.getElementById("puan"+parentdivname.id.substring(6)).textContent=toplamkartdegeri;  
+   }
+   else if(randomsayisinek>10)
+   {
+       let toplamkartdegeri = denemedivpuan+10;
+       document.getElementById("puan"+parentdivname.id.substring(6)).textContent=toplamkartdegeri;  
+   }
+                        
             
      let cikarilacakindexsayisi = randomsayisinek-1;
+     cekilenkartsayisi+=1;
   
        sinek.splice(cikarilacakindexsayisi,1,"bosluk");  
     
@@ -475,41 +563,16 @@ switch (desteadi) {
      else
      {
          console.log("sinek destesi bitti!");
+         kartcekfunc(parentdivname);
      }
-        break;
+     break;
 
     default:
         break;
 }
 
+    }
 }
-
-
-// if(cekilenkart2-1 !== cekilenkart-1 )
-// {
-//     kupa.splice(cekilenkart2-1,1);
-//     console.log("Cekilen kart = " +cekilenkart2);
-//     document.getElementById("masa").appendChild(kupaimgels[cekilenkart2-1]);
-//     kupaimgels.splice[cekilenkart2-1,1];
-//     console.log("cekilen kart index "+ cekilenkart2);
-//     console.log("yeni kupa destesi = " + kupa)
-//     console.log(kupaimgels)
-    
-// }
-// else
-// {
-//     let cekilenkart3 =  Math.floor((Math.random()* kupa.length)+1);
-//     kupa.splice(cekilenkart3,1);
-//     console.log("ayn-yeni Cekilen kart = " +cekilenkart3);
-//     document.getElementById("masa").appendChild(kupaimgels[cekilenkart3-1]);
-//     kupaimgels.splice[cekilenkart3-1,1];
-//     console.log("cekilen kart index "+ cekilenkart3);
-//     console.log("aynı yeni kupa destesi = " + kupa)
-//     console.log(kupaimgels)
-// }
-
-//console.log("tüm deste lenght = "+ tumdeste[0]);
-
 
 
 let kartcekmesirasi = 0 ;
@@ -547,8 +610,6 @@ function kartcekme()
 // console.log("sinek kartlar= " +sinek)
 
 //1. kartı dağıtma 
-
-
 
 
 

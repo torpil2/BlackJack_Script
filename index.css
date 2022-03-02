@@ -1,6 +1,6 @@
 body
 {
-    background-color: green;
+    background-color: #009900;
   
 }
 
@@ -15,6 +15,12 @@ img#logo
     width: 150px;
     height: 150px;
    margin: auto;
+}
+img#masacards
+{
+    width: 130px;
+    height: 180px;  
+    
 }
 
 #masa
@@ -40,18 +46,29 @@ img
 {
     width: 100px;
     height: 140px;;
-   margin-bottom: 20px;
-   margin-top: 20px;
-   margin-right: -20px; 
+ 
+   margin-top: 10px;
+   margin-right: -30px;  
   
 }
 
 span
 {
 font-weight:100px;
-font-size: 30px;
+font-size: 40px;
 text-decoration: underline;
-font-family: fantasy;
+
+color: red;
+
+}
+
+.kartpuandiv
+{
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 5px;
 }
 
 #oyuncular
@@ -75,6 +92,12 @@ font-family: fantasy;
 
 }
 
+button
+{
+    border-radius: 10px;
+ 
+}
+
 button.oturbttn
 {
  
@@ -87,8 +110,12 @@ button.oturbttn
  
     font-weight: 600;
     font-size: 20px;
-    align-content: center;
-    
+    align-content: center;    
+}
+#oturbttn1:hover
+{
+    background-color: #2E8B57; 
+    transition: 1s;
 }
 
 #countdowndiv
@@ -110,6 +137,7 @@ img#checkmark
      /*
     margin-top: 300px;   
     margin-bottom: 50px; */
+    position:initial;
 }
 button.kalkbttn
 {
@@ -126,9 +154,11 @@ button.kalkbttn
     flex-wrap: wrap;
     border: 1px solid red;
     background-color: cornflowerblue;
-      
+    padding:6px;
+/*       
     align-items: center;
     justify-content: center;
+    position:initial; */
 }
 
 #deneme1234
@@ -143,9 +173,18 @@ button.kalkbttn
     justify-content: center;
 }
 
-#buttondiv
+#buttondiv  
 {
 margin-top: 40 px;
+position:initial;
+border:  5px solid white;
+border-radius: 13px;
+
+}
+h3
+{
+    text-align: center;
+    font-size: 20px;
 }
 
 #kartcekbtn1
@@ -180,7 +219,7 @@ button#kartcekmebtn1:hover
     background-color: #800000;
     transition: 1s;
 }       
-#kartcekbtn1:active
+/* #kartcekbtn1:active
 {
     -webkit-animation:spin 0.3s linear infinite;
     -moz-animation:spin 0.3s linear infinite;
@@ -193,7 +232,7 @@ button#kartcekmebtn1:hover
     -webkit-animation:reversespin 0.3s linear infinite;
     -moz-animation:reversespin 0.3s linear infinite;
     animation:reversespin 0.3s linear infinite;
-}
+} */
 
 
 h4
@@ -232,6 +271,15 @@ font-size: 40px;
             transform:rotate(-360deg); 
         }
     }
+
+    @font-face
+    {
+    
+       font-family: 'Expectative-grK1';
+       src: URL('Fonts/Expectative-grK1.ttf') format('truetype');
+          
+    }
+
 /* #deneme123 div
 {
     width: 70px;

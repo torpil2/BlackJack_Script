@@ -5,13 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Black Jack</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="Bootstrap/css/" rel="stylesheet">
+    <script src="Bootstrap/js/bootstrap.min.js" ></script>
+    <link href="Font_Awesome/css/all.css" rel="stylesheet"> 
+    <script defer src="Font_Awesome/js/all.js"></script> load all styles -->
     <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
+
+  
+
+
     
 </head>
 <body>
         <img id="logo" src="Images/pngwing.com.png">
         
-    <div class="container">
+    <div class="">
          
 
         <div id="masa">
@@ -21,10 +29,10 @@
                 </div>
             <div id="kasa-els">
                     <span>Kasa</span>
-                    <div id="kasas-cards">
-                            <!-- <img src="Images/Card_Images/karocards/karo103.png">        
-                            <img src="Images/Card_Images/karocards/karo103.png">
-                            <img src="Images/Card_Images/karocards/karo103.png"> -->
+                    <div id="kasa-cards">
+                             <img id="masacards" src="Images/Card_Images/kupacards/kupa11.png">        
+                            <img id="masacards" src="Images/Card_Images/card back black.png">
+                           
                         <!-- <img src="Images/Card Images/10_of_diamonds.png" alt="">
                         <img src="Images/Card Images/card back black.png">           -->
                                 
@@ -38,7 +46,7 @@
                        <div id="deneme123">
                            <div id="oyuncu1">
                                   
-                                <button class="oturbttn" id="oturbttn1" onclick="otur()">Otur1</button>
+                                <button class="oturbttn" id="oturbttn1" onclick="otur(this.parentElement)">Otur1</button>
                             
                                 <!-- <button class="kartcek" id="kartcekbtn1" onclick="kartcek()">Kart Çek</button>
                                 <button class="kartcekme" id="kartcekmebtn1" onclick="kartcekme()">Dur</button> -->
@@ -49,23 +57,25 @@
                       
                     </div>
 
-                <div id="deneme1234">
-                        <div id="oyuncu2" >                              
-                                <button class="oturbttn" id="oturbttn2" onclick="otur()" >Otur2</button>
+                <div id="deneme123">
+                        <div id="oyuncu2" name="oyuncu2" >                              
+                                <button class="oturbttn" id="oturbttn1" onclick="otur(this.parentElement)" >Otur2</button>
+                                <!-- <button class="oturbttn" id="deneme222" onclick="getparentdiv(this.parentElement)">get parent div</button> -->
                         </div>
                 </div>
               
                   <div id="deneme123">
 
-                        <div id="oyuncu3" >                              
-                                <button class="oturbttn" id="oturbttn3">Otur3</button>
+                        <div id="oyuncu3" name="oyuncu3" >                              
+                                <button class="oturbttn" id="oturbttn1" onclick="otur(this.parentElement)">Otur3</button>
+                                <!-- <button class="oturbttn" id="deneme2223" onclick="getparentdiv(this.parentElement)">get parent div</button> -->
                         </div>
                   </div>
 
                   <div id="deneme123">
 
-                        <div id="oyuncu4        " >                              
-                                <button class="oturbttn" id="oturbttn4">Otur4</button>
+                        <div id="oyuncu4" >                              
+                                <button class="oturbttn" id="oturbttn1" onclick="otur(this.parentElement)">Otur4</button>
                         </div>
                   </div>
               
